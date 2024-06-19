@@ -48,11 +48,11 @@ const SideBar = () => {
                     <DashboardIcon />
                     <p>Create Department</p>
                 </div>
-                <div>
+                <div onClick={() => navigate('/discount')}>
                     <DashboardIcon />
                     <p>Discounts</p>
                 </div>
-                <div>
+                <div onClick={() => navigate('/service')}>
                     <DashboardIcon />
                     <p>Services</p>
                 </div>

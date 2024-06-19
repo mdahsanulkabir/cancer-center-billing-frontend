@@ -9,6 +9,8 @@ import Unauthorized from './components/Unauthorized'
 import CreateInvoice from './pages/CreateInvoice'
 import Welcome from './components/Welcome'
 import Department from './pages/Department'
+import Discount from './pages/Discount'
+import Service from './pages/Service'
 
 function App() {
 
@@ -26,6 +28,8 @@ function App() {
               <Route element={<RequireAuth allowedRoles={["666ed89d56e19049d12ed058"]} />}>
                 <Route path='/create-invoice' element={<CreateInvoice />} />
                 <Route path='/department' element={<Department />} />
+                <Route path='/discount' element={<Discount />} />
+                <Route path='/service' element={<Service />} />
               </Route>
             </Route>
           </Route>

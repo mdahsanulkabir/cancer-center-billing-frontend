@@ -8,52 +8,59 @@ import { colorTokens } from '../utils/theme/colorTokens';
 import { Controller, useForm } from "react-hook-form";
 
 
-const Department = () => {
-    const [existingDepartments, setExistingDepartments] = useState([])
+const Discount = () => {
+    const [existingDiscountCategories, setExistingDiscountCategories] = useState([])
     const axiosPrivate = useAxiosIntercept();
     const theme = useTheme();
     const colors = colorTokens(theme.palette.mode);
 
     useEffect(() => {
-        const getExistingDepartments = async () => {
-            const response = await axiosPrivate.get('/department')
-            setExistingDepartments(response.data);
+        const getExistingDiscountCategories = async () => {
+            const response = await axiosPrivate.get('/discount')
+            setExistingDiscountCategories(response.data);
             console.log(response.data)
         }
 
-        getExistingDepartments();
+        getExistingDiscountCategories();
     }, [axiosPrivate])
 
     const columns = [
         { field: "sl", headerName: "SL" },
         {
-            field: "departmentName",
-            headerName: "Department Name",
+            field: "discountName",
+            headerName: "Discount Name",
+            flex: 1,
+            cellClassName: "name-column--cell",
+        },
+        {
+            field: "discountRate",
+            headerName: "Rate (%)",
             flex: 1,
             cellClassName: "name-column--cell",
         }
     ]
     // const [deptList, setDeptList] = useState([]);
-    let deptList = []
-
-    deptList = existingDepartments.map((dept, index) => {
+    let discountListArranged = []
+    discountListArranged = existingDiscountCategories.map((discount, index) => {
         return {
-            id: index,
+            id: discount._id,
             sl: index + 1,
-            departmentName: dept.departmentName
+            discountName: discount.discountName,
+            discountRate: discount.discountRate
         }
     })
 
     const { control, handleSubmit } = useForm({
         defaultValues: {
-            departmentName: "",
+            discountName: "",
+            discountRate: 0
         }
     });
 
     const onSubmit = async (data) => {
         try {
-            const response = await axiosPrivate.post('/department',JSON.stringify(data))
-            setExistingDepartments(prev => ([...prev, response.data]))
+            const response = await axiosPrivate.post('/discount',JSON.stringify(data))
+            setExistingDiscountCategories(prev => ([...prev, response.data]))
         } catch (error) {
             console.log(error)
         }
@@ -61,8 +68,8 @@ const Department = () => {
 
     return (
         <div>
-            <Header1 title="Departments" subtitle="view create departments" />
-            <Header2 title="EXISTING DEPARTMENTS" subtitle="" />
+            <Header1 title="DISCOUNTS" subtitle="view create discounts" />
+            <Header2 title="EXISTING DISCOUNT CATEGORIES" subtitle="" />
             <Box
                 m="20px 0 20px 0"
                 height="40vh"
@@ -92,17 +99,17 @@ const Department = () => {
                     },
                 }}
             >
-                <DataGrid checkboxSelection rows={deptList} columns={columns} />
+                <DataGrid checkboxSelection rows={discountListArranged} columns={columns} />
             </Box>
 
-            <div className="create-department">
-                <Header2 title="CREATE DEPARTMENT" subtitle="" />
-                <div className="create-department-form-content">
+            <div className="create-discount">
+                <Header2 title="CREATE DISCOUNT CATEGORY" subtitle="" />
+                <div className="create-discount-form-content">
                     <form onSubmit={handleSubmit(onSubmit)}>
                         <Controller
                             control={control}
                             rules={{ required: true }}
-                            name="departmentName"
+                            name="discountName"
                             render={({ field }) => (
                                 <TextField
                                     fullWidth
@@ -110,7 +117,23 @@ const Department = () => {
                                     autoComplete="new-password"
                                     variant="filled"
                                     type="text"
-                                    label="Department Name"
+                                    label="Discount Name"
+                                    {...field}
+                                />
+                            )}
+                        />
+                        <Controller
+                            control={control}
+                            rules={{ required: true }}
+                            name="discountRate"
+                            render={({ field }) => (
+                                <TextField
+                                    fullWidth
+                                    sx={{ marginBlock: 2 }}
+                                    autoComplete="new-password"
+                                    variant="filled"
+                                    type="text"
+                                    label="Discount Rate"
                                     {...field}
                                 />
                             )}
@@ -120,7 +143,7 @@ const Department = () => {
                             type="submit"
                             variant="contained"
                         >
-                            Add Department
+                            Add Discount Category
                         </Button>
                     </form>
                 </div>
@@ -129,4 +152,4 @@ const Department = () => {
     );
 };
 
-export default Department;
+export default Discount;
