@@ -1,42 +1,219 @@
+/* Global */
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
+}
+
+html,
+body,
 #root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  height: 100%;
+}
+
+.login {
+  width: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .login-content {
+    width: 500px;
+    height: auto;
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 20px 50px 5px#235345;
+    box-shadow: 10px 2px 50px 5px#627b44;
+  }
+
+  h2 {
+    text-align: center;
+    margin: 0 0 5px 0;
+    font-weight: bold;
+  }
+
+  h5,
+  h4 {
+    text-align: center;
+  }
+
+  h4 {
+    margin: 0 0 5px 0;
+  }
+
+  .login-form-content {
+    width: 90%;
+    margin-inline: auto;
+
+    form {
+      display: flex;
+      flex-direction: column;
+      width: 70%;
+      margin-inline: auto;
+    }
+  }
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+main .app-wrapper {
+  height: calc(100% - 20px);
+}
+
+footer {
+  width: 100%;
+  background-color: red;
+  height: 20px;
+}
+
+.app-wrapper {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.panel-side,
+.content-side {
+  /* overflow-x: auto; */
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.panel-side {
+  background-color: #f0f0f0;
+  width: 265px;
+}
+
+.panel-side .menus {
+  height: 100%;
+  overflow-y: auto;
+  background-color: darksalmon;
+  scrollbar-width: none;
+  padding-left: 40px;
+  padding-block: 5px;
+}
+
+.content-side .main-content {
+  height: 100%;
+  overflow-y: auto;
+  background-color: darksalmon;
+  /* scrollbar-width: none; */
+  /* padding-left: 40px; */
+  padding-block: 5px;
+  margin-top: 10px;
+}
+
+.panel-side .menus>* {
+  display: flex;
+  height: 40px;
+  align-items: center;
+}
+
+.panel-side .menus svg {
+  margin-inline: 10px;
+}
+
+.panel-side .role-wrapper {
+  width: 100%;
+  height: 56px;
+  text-align: center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-side .role-wrapper .menu-show-hide {
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  left: 100%;
+  top: 0;
+  bottom: 0;
+  border-radius: 0 50% 50% 0;
+  background-color: rebeccapurple;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.panel-side .logo-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.panel-side .logo-container .logo {
+  width: 150px;
+}
+
+.user-name {
   text-align: center;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.content-side {
+  flex: 1;
+  background-color: #c2d1d9;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+nav {
+  display: flex;
+  justify-content: space-between;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.search-bar {
+  display: flex;
+  border-radius: 3px;
 }
 
-.card {
-  padding: 2em;
+.search-text {
+  margin-left: 24px;
+  flex: 1;
 }
 
-.read-the-docs {
-  color: #888;
+.icon-group {
+  display: flex;
+}
+
+.welcome {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.welcome::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/logo-full.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.1;
+  /* Adjust opacity as needed */
+  z-index: 1;
+  /* Ensure the background image is behind the content */
+}
+
+.welcome h1 {
+  position: relative;
+  z-index: 2;
+  padding: 10px;
 }

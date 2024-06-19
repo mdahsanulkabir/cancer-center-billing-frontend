@@ -1,34 +1,36 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Outlet, Route, Routes } from 'react-router-dom'
 import './App.css'
+// import Layout from './components/Layout'
+import Login from './pages/Login'
+import Home from './pages/Home'
+import PersistLogin from './components/PersistLogin'
+import RequireAuth from './components/RequireAuth'
+import Unauthorized from './components/Unauthorized'
+import CreateInvoice from './pages/CreateInvoice'
+import Welcome from './components/Welcome'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <Routes>
+      <Route path='/' element={<Outlet />}>
+        <Route path="login" element={<Login />} />
+        {/* <Route path='unauthorized' element={<Unauthorized />} /> */}
+
+        <Route element={<PersistLogin />}>
+          <Route element={<RequireAuth allowedRoles={["666ed89d56e19049d12ed058", "66716ba18d0af3999eb9926c"]} />}>
+            <Route path='/' element={<Home />}>
+              <Route index element={<Welcome />} />
+              <Route path='unauthorized' element={<Unauthorized />} />
+              <Route element={<RequireAuth allowedRoles={["666ed89d56e19049d12ed058"]} />}>
+                <Route path='/create-invoice' element={<CreateInvoice />} />
+                <Route path='/department' element={<CreateInvoice />} />
+              </Route>
+            </Route>
+          </Route>
+        </Route>
+      </Route>
+    </Routes>
   )
 }
 
