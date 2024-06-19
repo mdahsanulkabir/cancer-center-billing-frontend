@@ -44,7 +44,7 @@ const SideBar = () => {
                     <p>Show Invoice</p>
                 </div>
                 <p>Operation Structure</p>
-                <div>
+                <div onClick={() => navigate('/department')}>
                     <DashboardIcon />
                     <p>Create Department</p>
                 </div>

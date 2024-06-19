@@ -8,8 +8,6 @@ import { useLocation, useNavigate } from "react-router-dom";
 
 const Login = () => {
     const { setAuth } = useAuth();
-
-
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state?.from?.pathname || '/'
