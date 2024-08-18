@@ -61,7 +61,7 @@ const Department = () => {
 
     return (
         <div>
-            <Header1 title="Departments" subtitle="view create departments" />
+            <Header1 title="DEPARTMENTS" subtitle="view create departments" />
             <Header2 title="EXISTING DEPARTMENTS" subtitle="" />
             <Box
                 m="20px 0 20px 0"

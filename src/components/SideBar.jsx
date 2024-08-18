@@ -1,6 +1,6 @@
 import MenuOutlinedIcon from "@mui/icons-material/MenuOutlined";
 import DashboardIcon from '@mui/icons-material/Dashboard';
-// import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
+import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import logo from "../assets/logo-full.png"
 import { IconButton, Paper } from "@mui/material";
 import useAuth from "../hooks/useAuth";
@@ -31,7 +31,7 @@ const SideBar = () => {
                     <p>Dashboard</p>
                 </div>
                 <p>Data</p>
-                <div>
+                <div onClick={() => navigate('/team')}>
                     <DashboardIcon />
                     <p>Manage Team</p>
                 </div>
@@ -39,7 +39,7 @@ const SideBar = () => {
                     <DashboardIcon />
                     <p>Modify Invoice</p>
                 </div>
-                <div>
+                <div onClick={() => navigate('/show-invoice')}>
                     <DashboardIcon />
                     <p>Show Invoice</p>
                 </div>
@@ -69,6 +69,10 @@ const SideBar = () => {
                 <div>
                     <DashboardIcon />
                     <p>Service Booth</p>
+                </div>
+                <div onClick={() => navigate('/patient')}>
+                    <PersonOutlinedIcon />
+                    <p>Patient</p>
                 </div>
                 <div onClick={() => navigate('/create-invoice')}>
                     <DashboardIcon />
