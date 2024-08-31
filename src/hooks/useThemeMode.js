@@ -3,7 +3,7 @@ import { useMemo, useState } from "react";
 import { themeSettings } from "../utils/theme/themeSettings";
 
 export const useThemeMode = () => {
-    const [mode, setMode] = useState("dark");
+    const [mode, setMode] = useState("light");
   
     const colorMode = useMemo(
       () => ({

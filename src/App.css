@@ -207,9 +207,7 @@ nav {
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0.1;
-  /* Adjust opacity as needed */
   z-index: 1;
-  /* Ensure the background image is behind the content */
 }
 
 .welcome h1 {

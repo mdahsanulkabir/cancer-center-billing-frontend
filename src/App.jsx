@@ -14,6 +14,8 @@ import Service from './pages/Service'
 import Patient from './pages/Patient'
 import Team from './pages/Team'
 import ShowInvoice from './pages/ShowInvoice'
+import CreateInvoice2 from './pages/CreateInvoice2'
+import CreatePatient from './pages/CreatePatient'
 
 function App() {
 
@@ -33,7 +35,8 @@ function App() {
                 <Route path='/department' element={<Department />} />       {/* department code checked*/}
                 <Route path='/discount' element={<Discount />} />           {/* discount code checked*/}
                 <Route path='/service' element={<Service />} />             {/* service code checked*/}
-                <Route path='/patient' element={<Patient />} />
+                <Route path='/search-patient' element={<Patient />} />
+                <Route path='/create-patient' element={<CreatePatient />} />
                 <Route path='/team' element={<Team />} />
                 <Route path='/show-invoice' element={<ShowInvoice />} />
               </Route>

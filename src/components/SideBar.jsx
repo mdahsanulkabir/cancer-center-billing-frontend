@@ -70,9 +70,13 @@ const SideBar = () => {
                     <DashboardIcon />
                     <p>Service Booth</p>
                 </div>
-                <div onClick={() => navigate('/patient')}>
+                <div onClick={() => navigate('/search-patient')}>
                     <PersonOutlinedIcon />
-                    <p>Patient</p>
+                    <p>Search Patient</p>
+                </div>
+                <div onClick={() => navigate('/create-patient')}>
+                    <PersonOutlinedIcon />
+                    <p>Create Patient</p>
                 </div>
                 <div onClick={() => navigate('/create-invoice')}>
                     <DashboardIcon />

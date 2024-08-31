@@ -10,7 +10,7 @@ import useAuth from "../hooks/useAuth";
 
 let render = 0
 
-const CreateInvoice = () => {
+const CreateInvoice2 = () => {
     const { auth } = useAuth();
     const location = useLocation();
     const patient = location.state;
@@ -75,7 +75,7 @@ const CreateInvoice = () => {
     }, [axiosPrivate])
 
     if (!patient) {
-        return <Navigate to="/search-patient" replace={true} />
+        return <Navigate to="/patient" replace={true} />
     }
 
     const serviceOptions = existingServices?.map(service => ({
@@ -473,4 +473,4 @@ const CreateInvoice = () => {
     );
 };
 
-export default CreateInvoice;
+export default CreateInvoice2;
